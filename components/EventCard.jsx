@@ -13,25 +13,25 @@ const EventCard = ({ eventData }) => {
         <div>
           <img
             className="w-full  mb-3 group-hover:filter-none shadow-lg m-auto "
-            src={eventData.image}
+            src={eventData?.image}
             alt="Bonnie image"
           />
           <div className="flex gap-2 items-center">
-            {eventData.tags.map((tag) => (
+            {eventData?.tags?.map((tag) => (
               <Tag text={tag} key={tag} />
             ))}
           </div>
           <p className="mt-5 mb-10">
-            {new Date(eventData.date).toDateString()} | {eventData.time}
+            {new Date(eventData?.date).toDateString()} | {eventData?.time}
           </p>
-          <p>{eventData.location}</p>
-          <h2 className="text-2xl font-bold">{eventData.name}</h2>
+          <p>{eventData?.location}</p>
+          <h2 className="text-2xl font-bold">{eventData?.name}</h2>
           <div className="flex justify-between items-center mt-10">
-            <h3 className="text-2xl">{eventData.artist}</h3>
+            <h3 className="text-2xl">{eventData?.artist}</h3>
             <h3 className="text-2xl">
               {" "}
-              {eventData.price > 0
-                ? `$ ${eventData.price.toLocaleString()}`
+              {eventData?.price > 0
+                ? `$ ${eventData?.price.toLocaleString()}`
                 : "FREE"}
             </h3>
           </div>
