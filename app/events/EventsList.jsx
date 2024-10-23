@@ -1,29 +1,37 @@
-"use client"
+"use client";
 
-import EventCard from '@/components/EventCard';
-import { useSearchParams } from 'next/navigation';
+import EventCard from "@/components/EventCard";
+import { useSearchParams } from "next/navigation";
 
-const EventsList = ({events}) => {
-  // const [eventData, setEventData] = useState([events])
+const EventsList = ({ events }) => {
+  console.log(events);
   const searchParams = useSearchParams();
-  const keyword = searchParams.get("artists")
-  console.log('keyword', keyword)
+  // this is for artists
+  const keyword = searchParams.get("artists");
+  console.log("keyword", keyword);
+  const filterEvent = events.filter((event) => event.artist === keyword);
 
-  const filterEvent = events.filter(event => event.artist === keyword)
-  console.log('events', events)
+  //this is for tags
+  const tagName = searchParams.get("tag");
+  console.log("tag", tagName);
+  const tagFilter = events.filter((event) => event.tags?.includes(tagName));
+  console.log("tagFilter", tagFilter);
+
   return (
     <div className="flex flex-wrap pt-10 pl-3">
-      {keyword === null ? 
-        events.map((eventData) => (
-          <EventCard eventData={eventData} key={eventData.id}/>
-      )) : (
-      filterEvent.map((eventData) => (
-        <EventCard eventData={eventData} key={eventData.id}/>
-      )
-      ))
-    }
+      {keyword === null && tagName === null
+        ? events.map((eventData) => (
+            <EventCard eventData={eventData} key={eventData.id} />
+          ))
+        : keyword != null && tagName === null
+        ? filterEvent.map((eventData) => (
+            <EventCard eventData={eventData} key={eventData.id} />
+          ))
+        : tagFilter.map((eventData) => (
+            <EventCard eventData={eventData} key={eventData.id} />
+          ))}
     </div>
-  )
-}
+  );
+};
 
-export default EventsList
+export default EventsList;
