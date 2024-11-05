@@ -10,17 +10,17 @@ export const metadata = {
   title: "QEvent",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, session }) {
   return (
-    <SessionWrapper>
-      <html lang="en">
-        <body className={inter.className}>
+    <html lang="en">
+      <body className={inter.className}>
+        <SessionWrapper session={session}>
           <ThemeProvider attribute="class" defaultTheme="light">
             <Header />
             {children}
           </ThemeProvider>
-        </body>
-      </html>
-    </SessionWrapper>
+        </SessionWrapper>
+      </body>
+    </html>
   );
 }
