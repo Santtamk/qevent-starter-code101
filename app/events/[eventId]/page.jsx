@@ -6,7 +6,10 @@ import EventDetails from "./EventDetails";
 const EventsPage = () => {
   const { eventId } = useParams();
 
-  return <EventDetails eventId={eventId} />;
+  return(
+
+    <EventDetails eventId={eventId} />;
+  ) 
 };
 
 export default EventsPage;
