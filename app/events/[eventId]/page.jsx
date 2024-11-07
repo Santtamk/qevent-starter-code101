@@ -8,7 +8,7 @@ const EventsPage = () => {
 
   return(
 
-    <EventDetails eventId={eventId} />;
+    <EventDetails eventId={eventId} />
   ) 
 };
 
